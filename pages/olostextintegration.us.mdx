@@ -1,0 +1,32 @@
+# Olos Text Integration
+
+To configure Olos Text to connect to the provided middleware using the settings from the config.json file, we need to adjust the WebSocket connection settings and ensure that Olos Text is configured to communicate with the middleware either via WebSocket or low-level socket, based on the specified configuration.
+
+```json
+{
+    "port": "8081",
+    "useCRMWebSocket": false,
+    "crmWebSocketURL": "ws://example.com:8088",
+    "crmWebSocketPort": 8088,
+    "crmSocketPort": 3003,
+    "crmSocketHost": "example.com"
+}
+```
+
+With these example settings, here's how to configure Olos Text to connect to the middleware:
+
+1. **Open Olos Text Configuration**:
+   Access the configuration settings or configuration file of Olos Text where WebSocket connection parameters can be modified.
+
+2. **Update WebSocket Configuration**:
+   - If `"useCRMWebSocket": true`, configure Olos Text to establish a WebSocket connection directly to the middleware's WebSocket server using the `"crmWebSocketURL"` setting. Update the WebSocket URL to `"ws://example.com:8088"` as specified in the `config.json`.
+   
+   - If `"useCRMWebSocket": false`, configure Olos Text to establish a low-level socket connection to the middleware's socket server using the `"crmSocketPort"` and `"crmSocketHost"` settings. Update the socket port to `3003` and the host to `"example.com"` as specified in the `config.json`.
+
+3. **Apply Configuration Changes**:
+   Save the updated configuration settings in Olos Text and restart the application if necessary to apply the changes.
+
+4. **Verify Connection**:
+   After configuring Olos Text, verify that it successfully establishes a connection to the middleware using the specified communication protocol (WebSocket or low-level socket). Monitor the logs or console output for any connection-related messages or errors.
+
+By following these steps and updating the configuration settings in Olos Text according to the provided `config.json`, you can ensure that Olos Text is properly configured to connect to the middleware using the specified communication protocol.

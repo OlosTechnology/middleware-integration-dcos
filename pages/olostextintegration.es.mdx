@@ -1,0 +1,32 @@
+# Integración con Olos Text
+
+Para configurar Olos Text para conectarse al middleware proporcionado utilizando los ajustes del archivo config.json, necesitamos ajustar la configuración de conexión WebSocket y asegurarnos de que Olos Text esté configurado para comunicarse con el middleware ya sea a través de WebSocket o socket de bajo nivel, según la configuración especificada.
+
+```json
+{
+    "port": "8081",
+    "useCRMWebSocket": false,
+    "crmWebSocketURL": "ws://example.com:8088",
+    "crmWebSocketPort": 8088,
+    "crmSocketPort": 3003,
+    "crmSocketHost": "example.com"
+}
+```
+
+Con estos ajustes de ejemplo, así es como se configura Olos Text para conectarse al middleware:
+
+1. **Abrir la Configuración de Olos Text**:
+   Acceda a los ajustes de configuración o al archivo de configuración de Olos Text donde se pueden modificar los parámetros de conexión WebSocket.
+
+2. **Actualizar la Configuración de WebSocket**:
+   - Si `"useCRMWebSocket": true`, configure Olos Text para establecer una conexión WebSocket directamente al servidor WebSocket del middleware utilizando el ajuste `"crmWebSocketURL"`. Actualice la URL del WebSocket a `"ws://example.com:8088"` como se especifica en el `config.json`.
+   
+   - Si `"useCRMWebSocket": false`, configure Olos Text para establecer una conexión de socket de bajo nivel al servidor de sockets del middleware utilizando los ajustes `"crmSocketPort"` y `"crmSocketHost"`. Actualice el puerto del socket a `3003` y el host a `"example.com"` como se especifica en el `config.json`.
+
+3. **Aplicar los Cambios de Configuración**:
+   Guarde los ajustes de configuración actualizados en Olos Text y reinicie la aplicación si es necesario para aplicar los cambios.
+
+4. **Verificar la Conexión**:
+   Después de configurar Olos Text, verifique que establezca correctamente una conexión con el middleware utilizando el protocolo de comunicación especificado (WebSocket o socket de bajo nivel). Monitoree los registros o la salida de consola en busca de mensajes o errores relacionados con la conexión.
+
+Siguiendo estos pasos y actualizando los ajustes de configuración en Olos Text de acuerdo con el `config.json` proporcionado, puede asegurarse de que Olos Text esté correctamente configurado para conectarse al middleware utilizando el protocolo de comunicación especificado.

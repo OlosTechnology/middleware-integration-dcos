@@ -1,0 +1,321 @@
+# Eventos
+
+## Olos Text hacia CRM
+
+Estos son los eventos enviados desde OlosText hacia el CRM.
+
+### Login
+
+* Type: La propiedad "type" especifica el tipo del mensaje. En este caso, indica que el mensaje se refiere a un inicio de sesión en una campaña de chat.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo, que indica el momento en que ocurrió el evento. El valor está en formato de marca de tiempo Unix, que es el número de milisegundos transcurridos desde el 1 de enero de 1970, 00:00:00 UTC.
+* Agent ID: La propiedad "agentId" contiene un valor numérico (en este caso, 123) que representa el identificador único del agente asociado a la campaña de inicio de sesión de chat.
+* Campaign ID: La propiedad "campaignId" contiene un valor numérico (en este caso, 12) que representa el identificador único de la campaña.
+* Campaign Name: La propiedad "campaignName" contiene un valor de cadena ("CAMPAIGN Chat") que representa el nombre de la campaña.
+* Campaign Code: La propiedad "campaignCode" contiene un valor de cadena ("CAMPAIGN Chat") que representa el código de la campaña.
+
+En resumen, este objeto JSON representa datos relacionados con un evento de inicio de sesión en una campaña de chat, incluyendo detalles como marcas de tiempo, identificadores de agentes, identificadores de campañas, nombres de campañas y códigos de campañas. Está estructurado de manera que facilita su análisis y manipulación dentro de aplicaciones de software.
+
+Ejemplo:
+```json
+
+{
+    "type":"chatlogincampaign",
+    "timestamp":1714480274229,
+    "agentId":123,
+    "campaignId":12,
+    "campaignName":"CAMPAIGN Chat",
+    "campaignCode":"CAMPAIGN Chat"
+}
+
+```
+
+### Logout
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de una respuesta de cierre de sesión de chat.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo, que indica el momento en que ocurrió el evento. Al igual que en el ejemplo anterior, está en formato de marca de tiempo Unix.
+* Agent ID: La propiedad "agentId" contiene un valor numérico (123), que representa el identificador único del agente asociado a la sesión de chat que se cerró.
+* Error Code: La propiedad "errorCode" contiene un valor numérico (0), que típicamente representa un código de error o estado. En este caso, al ser 0, sugiere que no ocurrió ningún error durante el proceso de cierre de sesión.
+* Error Message: La propiedad "errorMessage" es null, indicando que no hay mensaje de error asociado a la respuesta de cierre de sesión.
+
+En resumen, este objeto JSON proporciona información sobre un evento de cierre de sesión de chat, incluyendo detalles como marcas de tiempo, identificadores de agentes e información relacionada con errores si corresponde. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+
+{
+    "type":"chatlogoutresponse",
+    "timestamp":1714480274229,
+    "agentId":123,
+    "errorCode":0,
+    "errorMessage":null
+}
+
+```
+
+### Pause
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de una respuesta de pausa de chat.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo, que indica el momento en que ocurrió el evento. Al igual que en los ejemplos anteriores, está en formato de marca de tiempo Unix.
+* Agent ID: La propiedad "agentId" contiene un valor numérico (123), que representa el identificador único del agente asociado a la sesión de chat que fue pausada.
+* Reason ID: La propiedad "reasonId" contiene un valor numérico (100), que representa la razón para pausar la sesión de chat. El significado exacto de este valor dependerá de la implementación específica.
+* Reason Code: La propiedad "reasonCode" es null, indicando que no se proporciona un código de razón específico para la pausa de la sesión de chat.
+* Error Code: La propiedad "errorCode" contiene un valor numérico (0), que típicamente representa un código de error o estado. En este caso, al ser 0, sugiere que no ocurrió ningún error durante el proceso de pausa.
+* Error Message: La propiedad "errorMessage" es null, indicando que no hay mensaje de error asociado a la respuesta de pausa.
+
+En resumen, este objeto JSON proporciona información sobre un evento de pausa de chat, incluyendo detalles como marcas de tiempo, identificadores de agentes, razones para la pausa e información relacionada con errores si corresponde. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+
+{
+    "type":"chatpauseresponse",
+    "timestamp":1714482156991,
+    "agentId":123,
+    "reasonId":100,
+    "reasonCode":null,
+    "errorCode":0,
+    "errorMessage":null
+}
+
+```
+
+### ScreenPopUp
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de un evento de pop-up de pantalla de chat.
+* Agent ID: La propiedad "agentId" contiene un valor numérico (123), que representa el identificador único del agente.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo, que indica el momento en que ocurrió el evento de pop-up de pantalla. Está en formato de marca de tiempo Unix.
+* Dialog ID: La propiedad "dialogId" contiene un identificador único ("XXXXXXXX") para el diálogo asociado al pop-up de pantalla.
+* Journey ID: La propiedad "journeyId" contiene un identificador único ("XXXXXXX") para el recorrido asociado al pop-up de pantalla.
+* Campaign ID: La propiedad "campaignId" contiene un valor numérico (12), que representa el identificador único de la campaña asociada al pop-up de pantalla.
+* User Nickname: La propiedad "userNickName" contiene un valor de cadena ("Olos Webchat") que representa el apodo del usuario involucrado en el chat.
+* Conversation: La propiedad "conversation" contiene un objeto que representa la conversación que ocurrió durante el pop-up de pantalla. Incluye detalles como los mensajes intercambiados entre el usuario y el sistema.
+* Extra Data: La propiedad "extraData" contiene datos adicionales en formato JSON, como el channelId y el protocolo.
+* Conversation ID: La propiedad "conversationId" contiene un identificador único ("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX") para la conversación asociada al pop-up de pantalla.
+* Channel: La propiedad "channel" especifica el canal a través del cual se realizó el chat, en este caso, "webchat".
+
+En resumen, este objeto JSON proporciona información detallada sobre un evento de pop-up de pantalla de chat, incluyendo metadatos sobre la conversación, diálogo, recorrido, campaña y canal involucrados. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+
+{
+    "type":"chatscreenpop",
+    "agentId":123,
+    "timestamp":1714495623830,
+    "dialogId":"XXXXXXXX",
+    "journeyId":"XXXXXXX",
+    "campaignId":12,
+    "userNickName":"Olos Webchat",
+    "conversation":
+        {
+            "botnckname":"Bot Staging",
+            "usrnckname":"Olos Webchat",
+            "conv":
+                [{
+                    "sender":1,
+                    "messageId":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "text":"",
+                    "instant":"2024-04-30 13:43:09.267",
+                    "attachments":null
+                },
+                {
+                    "sender":0,
+                    "messageId":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "text":"Você está no BOT de WebChat do Lab86.\nO que você quer fazer?",
+                    "instant":"2024-04-30 13:43:09.620",
+                    "attachments":null
+                },
+                {
+                    "sender":1,
+                    "messageId":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "text":"agente",
+                    "instant":"2024-04-30 13:43:13.231",
+                    "attachments":null
+                },
+                {
+                    "sender":0,
+                    "messageId":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "text":"Qual campanha?",
+                    "instant":"2024-04-30 13:43:13.254",
+                    "attachments":null
+                },
+                {
+                    "sender":1,
+                    "messageId":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "text":"Text",
+                    "instant":"2024-04-30 13:47:03.342",
+                    "attachments":null
+                }]
+        },
+        "extraData":"{\"channelId\":\"webchat\",\"protocol\":111222333}",
+        "conversationId":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "channel":"webchat"
+}
+
+```
+
+### Disposition
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de una respuesta de disposición de chat.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo, que indica el momento en que ocurrió la respuesta de disposición. Está en formato de marca de tiempo Unix.
+* Agent ID: La propiedad "agentId" contiene un valor numérico (123), que representa el identificador único del agente asociado a la sesión de chat que recibió la disposición.
+* Dialog ID: La propiedad "dialogId" contiene un identificador único ("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX") para el diálogo asociado a la respuesta de disposición.
+* Error Code: La propiedad "errorCode" contiene un valor numérico (0), que típicamente representa un código de error o estado. En este caso, al ser 0, sugiere que no ocurrió ningún error durante el proceso de disposición.
+* Error Message: La propiedad "errorMessage" es null, indicando que no hay mensaje de error asociado a la respuesta de disposición.
+
+En resumen, este objeto JSON proporciona información sobre un evento de disposición de chat, incluyendo detalles como marcas de tiempo, identificadores de agentes, identificadores de diálogo e información relacionada con errores si corresponde. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+
+{
+    "type":"chatdispositionresponse",
+    "timestamp":1714495643259,
+    "agentId":123,
+    "dialogId":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "errorCode":0,
+    "errorMessage":null
+}
+```
+
+### StatusAgent
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de un evento de cambio de estado de chat.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo, que indica el momento en que ocurrió el cambio de estado. Está en formato de marca de tiempo Unix.
+* Agent ID: La propiedad "agentId" contiene un valor numérico (123), que representa el identificador único del agente asociado a la sesión de chat cuyo estado cambió.
+* Campaign ID: La propiedad "campaignId" contiene un valor numérico (0), que representa el identificador único de la campaña asociada a la sesión de chat. En este caso, es 0, lo que podría indicar una campaña predeterminada o no especificada.
+* Status: La propiedad "status" contiene un valor numérico (1), que representa el nuevo estado de la sesión de chat. El significado de este valor de estado dependerá de la implementación específica.
+* Next Status: La propiedad "nextStatus" es null, indicando que no hay información sobre el próximo estado de la sesión de chat.
+* Reason ID: La propiedad "reasonId" es null, indicando que no se proporciona una razón específica para el cambio de estado.
+
+En resumen, este objeto JSON proporciona información sobre un cambio en el estado de una sesión de chat, incluyendo detalles como marcas de tiempo, identificadores de agentes, identificadores de campañas e información relacionada con el estado. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+
+{
+    "type":"chatchangestatus",
+    "timestamp":1714482140989,
+    "agentId":123,
+    "campaignId":0,
+    "status":1,
+    "nextStatus":null,
+    "reasonId":null
+}
+```
+
+### Cambio de Foco
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de un evento relacionado con el cambio de foco en la aplicación de chat.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo (12132132132), que indica el momento en que ocurrió el cambio de foco. El valor está en formato de marca de tiempo Unix.
+* Agent ID: La propiedad "agentID" contiene un valor numérico (1552132), que representa el identificador único del agente asociado al evento de cambio de foco.
+* Previous Focus: La propiedad "previous" contiene un objeto que representa el estado de foco anterior. Incluye detalles como el identificador del cliente y el identificador del diálogo asociados al foco anterior.
+* Actual Focus: La propiedad "actual" contiene un objeto que representa el estado de foco actual. Incluye detalles como el identificador del cliente y el identificador del diálogo asociados al foco actual.
+
+En resumen, este objeto JSON proporciona información sobre un cambio de foco dentro de una aplicación de chat, incluyendo detalles como marcas de tiempo, identificadores de agentes y los estados de foco anterior y actual. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+{
+    "type": "changingfocusOlos",
+    "timestamp": 12132132132,
+    "agentID": 1552132,
+    "previous": {
+        "customerID": 12346,
+        "dialogID": 155151511
+    },
+    "actual": {
+        "customerID": 12345,
+        "dialogID": 13123124124
+    }
+}
+```
+
+### Enviar Mensaje
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de un evento relacionado con el envío de datos al CRM.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo (12132132132), que indica el momento en que ocurrió el evento. El valor está en formato de marca de tiempo Unix.
+* Agent ID: La propiedad "agentID" contiene un valor numérico (1552132), que representa el identificador único del agente asociado al evento.
+* Dialog ID: La propiedad "dialogID" contiene un valor numérico (123), que representa el identificador único del diálogo asociado al evento.
+* Customer ID: La propiedad "customerID" contiene un valor numérico (345), que representa el identificador único del cliente asociado al evento.
+* Content: La propiedad "content" contiene un objeto que representa el contenido que se envía al sistema CRM. Incluye detalles como el tipo de contenido (txt, img o pdf), el contenido real (texto) y opcionalmente una URL si el tipo de contenido es una imagen o PDF. Los tipos de archivo válidos son los siguientes: 'jpg','jpeg','gif','png','bmp','tif','tiff','pdf','zip','rar','ppt','pptx','csv','mp3','mp4','xls','xlsx','doc','docx','webm','ogg','opus','webp'.
+
+En resumen, este objeto JSON proporciona información sobre el envío de datos a un sistema CRM, incluyendo detalles como marcas de tiempo, identificadores de agentes, identificadores de diálogos, identificadores de clientes y el contenido que se envía. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+{
+  "type": "sendToCRM",
+  "timestamp": 12132132132,
+  "agentID": 123,  
+  "dialogID": 456,
+  "customerID": 789,
+  "content"{
+        "type": "text" || "img" || "pdf",
+        "text": "xyz",
+        "url": "https://"
+   }
+}
+
+```
+
+## CRM hacia Olos Text
+
+Estos son los eventos enviados desde el CRM hacia OlosText.
+
+AVISO: Los siguientes métodos solo pueden ser llamados si el cliente está identificado.
+
+### Cambio de Foco
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de un evento relacionado con el cambio de foco en la aplicación de chat.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo (12132132132), que indica el momento en que ocurrió el cambio de foco. El valor está en formato de marca de tiempo Unix.
+* Agent ID: La propiedad "agentID" contiene un valor numérico (1552132), que representa el identificador único del agente asociado al evento de cambio de foco.
+* Previous Focus: La propiedad "previous" contiene un objeto que representa el estado de foco anterior. Incluye detalles como el identificador del cliente y el identificador del diálogo asociados al foco anterior.
+* Actual Focus: La propiedad "actual" contiene un objeto que representa el estado de foco actual. Incluye detalles como el identificador del cliente y el identificador del diálogo asociados al foco actual.
+
+En resumen, este objeto JSON proporciona información sobre un cambio de foco dentro de una aplicación de chat, incluyendo detalles como marcas de tiempo, identificadores de agentes y los estados de foco anterior y actual. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+{
+    "type": "changingfocusCRM",
+    "timestamp": 12132132132,
+    "agentID": 123,
+    "previous": {
+        "customerID": 12346,
+        "dialogID": 155151511
+    },
+    "actual": {
+        "customerID": 12345,
+        "dialogID": 13123124124
+    }
+}
+```
+
+### Enviar Mensaje
+
+* Type: La propiedad "type" especifica el tipo del mensaje, indicando que se trata de un evento relacionado con el envío de datos a OlosText.
+* Timestamp: La propiedad "timestamp" representa un valor de marca de tiempo (12132132132), que indica el momento en que ocurrió el evento. El valor está en formato de marca de tiempo Unix.
+* Agent ID: La propiedad "agentID" contiene un valor numérico (1552132), que representa el identificador único del agente asociado al evento.
+* Dialog ID: La propiedad "dialogID" contiene un valor numérico (123), que representa el identificador único del diálogo asociado al evento.
+* Customer ID: La propiedad "customerID" contiene un valor numérico (345), que representa el identificador único del cliente asociado al evento.
+* Content: La propiedad "content" contiene un objeto que representa el contenido que se envía al sistema CRM. Incluye detalles como el tipo de contenido (txt, img o pdf), el contenido real (texto) y opcionalmente una URL si el tipo de contenido es una imagen o PDF. Los tipos de archivo válidos son los siguientes: 'jpg','jpeg','gif','png','bmp','tif','tiff','pdf','zip','rar','ppt','pptx','csv','mp3','mp4','xls','xlsx','doc','docx','webm','ogg','opus','webp'.
+
+En resumen, este objeto JSON proporciona información sobre el envío de datos a un sistema CRM, incluyendo detalles como marcas de tiempo, identificadores de agentes, identificadores de diálogos, identificadores de clientes y el contenido que se envía. Está estructurado para transmitir información esencial sobre el evento en un formato legible por máquinas.
+
+Ejemplo:
+```json
+{
+  "type": "sendToOlos",
+  "timestamp": 12132132132,
+  "agentID": 123,  
+  "dialogID": 456,
+  "customerID": 789,
+  "content"{
+        "type": "text" || "img" || "pdf",
+        "text": "xyz",
+        "url": "https://"
+   }
+}
+
+```

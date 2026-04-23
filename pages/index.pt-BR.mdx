@@ -1,1 +1,31 @@
-# Bem-vindo
+![Architecture](./defaultArchitecture.png)
+
+# Introdução
+
+O projeto de integração entre os sistemas OlosChat e CRM, representado pelo código fornecido, visa facilitar a comunicação e troca de dados entre a plataforma de chat OlosChat e os sistemas de gestão de relacionamento com o cliente (CRM). Este projeto é desenvolvido utilizando TypeScript e diversas tecnologias de comunicação em tempo real, como WebSockets e soquetes de baixo nível.
+
+A classe principal do projeto é chamada `IntegrationSDK`, que funciona como um kit de desenvolvimento de software para integração. Encapsula a lógica necessária para estabelecer conexões com os sistemas OlosChat e CRM, além de facilitar o envio de eventos e mensagens entre esses sistemas.
+
+A integração é alcançada através de dois métodos principais: via WebSockets para comunicação em tempo real com o OlosChat, e através de soquetes de baixo nível para interação com sistemas CRM. A classe `IntegrationSDK` gerencia ambas as conexões de forma eficiente, permitindo o envio e recebimento de eventos e dados entre todas as partes envolvidas.
+
+O projeto adota uma abordagem modular, com diferentes entidades e utilitários responsáveis ​​por tarefas específicas, como leitura de configurações, tratamento de conexões WebSocket e comunicação com clientes de CRM. Além disso, são implementados mecanismos para lidar com a conexão e desconexão do cliente, bem como para garantir a atribuição adequada de identificadores de agente.
+
+Através deste projeto é possível integrar perfeitamente o OlosChat com diversos sistemas de CRM, possibilitando uma melhor experiência do usuário e uma gestão mais eficiente do relacionamento com o cliente.
+
+## O que é SDK de integração?
+
+Este sistema é uma solução abrangente projetada para conectar perfeitamente o OlosChat, uma plataforma de chat versátil, com vários sistemas de gerenciamento de relacionamento com o cliente (CRM). É composto por vários componentes principais:
+
+1. **WebSocketToCRM**: Esta classe serve como gateway para estabelecer uma conexão WebSocket com o sistema CRM. Ele gerencia o servidor WebSocket, manipulando eventos como estabelecimento de conexão, fechamento e erros. Além disso, fornece ganchos para adicionar e remover clientes WebSocket, permitindo que o sistema reaja dinamicamente às interações do cliente.
+
+2. **SocketToCRM**: semelhante ao WebSocketToCRM, esta classe orquestra a configuração de uma conexão de soquete de baixo nível com o sistema CRM. Ele supervisiona a criação do servidor de soquete, gerencia eventos como conexão de cliente e recepção de dados e oferece ganchos para adicionar e remover clientes de soquete. Este design flexível permite métodos alternativos de comunicação com o sistema CRM, atendendo a diversos ambientes tecnológicos.
+
+3. **OlosTextWebSocket**: Aqui temos um componente crucial responsável por gerenciar a conexão WebSocket com a plataforma OlosChat. Esta classe trata as mensagens recebidas dos clientes OlosChat, processa-as e encaminha os dados relevantes para o sistema CRM. Monitora o servidor WebSocket, reagindo a eventos como fechamento de conexão e erros, garantindo comunicação ininterrupta entre o OlosChat e o sistema CRM.
+
+4. **CRMClient**: Esta classe encapsula a representação de um cliente conectado ao sistema CRM, independentemente de a conexão ser via WebSocket ou soquete de baixo nível. Ele mantém informações essenciais do cliente, como índice, conexão de soquete e ID de agente atribuído. Ao fornecer métodos para recuperar e definir o ID do agente, facilita a identificação e o gerenciamento contínuos de clientes dentro do sistema de integração.
+
+Juntos, esses componentes formam uma estrutura robusta para integração do OlosChat com sistemas CRM, permitindo comunicação eficiente e troca de dados entre as duas plataformas. O design modular do sistema e a arquitetura orientada a eventos permitem que os desenvolvedores ampliem sua funcionalidade e o adaptem a diversos cenários de integração, garantindo escalabilidade e flexibilidade no atendimento às necessidades de negócios.
+
+## Repositório
+
+[https://github.com/OlosCore/olos-chat-integration-sdk](https://github.com/OlosCore/olos-chat-integration-sdk).

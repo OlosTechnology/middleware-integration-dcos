@@ -1,0 +1,77 @@
+# Cómo Integrar
+
+Creemos ejemplos para integrar un sistema CRM con el middleware proporcionado utilizando tanto comunicación WebSocket como sockets de bajo nivel en Node.js. Simularemos un sistema CRM básico que se conecta al middleware, envía un mensaje y recibe una respuesta.
+
+## Integración por WebSocket
+
+Primero, comencemos con la integración por WebSocket:
+
+```javascript
+
+const WebSocket = require('ws'); // Node.js WebSocket module
+
+function connectToMiddlewareViaWebSocket() { // Function to connect CRM to middleware via WebSocket
+    const ws = new WebSocket('ws://localhost:8088'); // Connect to middleware WebSocket server
+
+    ws.on('open', () => { // Event listener for connection establishment
+        console.log('Connected to middleware via WebSocket.'); // Log connection establishment
+        ws.send('Hello from CRM!'); // Send message to middleware
+    });
+
+    ws.on('message', message => { // Event listener for incoming messages
+        console.log('Received message from middleware:', message); // Log incoming message
+        // Process incoming message from middleware
+    });
+
+    ws.on('close', () => { // Event listener for connection closure
+        console.log('WebSocket connection closed.'); // Log connection closure
+    });
+
+    ws.on('error', error => { // Event listener for errors
+        console.error('WebSocket error:', error); // Log error
+    });
+}
+
+// Connect CRM to middleware via WebSocket
+connectToMiddlewareViaWebSocket();
+```
+
+## Integración por Socket de Bajo Nivel
+
+```javascript
+
+const net = require('net'); // Node.js net module for TCP sockets
+
+function connectToMiddlewareViaSocket() { // Function to connect CRM to middleware via low-level socket
+    const socket = net.connect({ port: 3003, host: 'localhost' }, () => { // Connect to middleware
+        console.log('Connected to middleware via low-level socket.');
+        socket.write('Hello from CRM!\n'); // Send message to middleware
+    });
+
+    socket.on('data', data => { // Event listener for incoming data
+        console.log('Received data from middleware:', data.toString());
+        // Process incoming data from middleware
+    });
+
+    socket.on('close', () => { // Event listener for connection closure
+        console.log('Socket connection closed.');
+    });
+
+    socket.on('error', error => { // Event listener for errors
+        console.error('Socket error:', error);
+    });
+}
+
+// Connect CRM to middleware via low-level socket
+connectToMiddlewareViaSocket();
+```
+
+## Conclusión
+
+En estos ejemplos:
+
+Creamos un cliente WebSocket en la función connectToMiddlewareViaWebSocket y lo conectamos al servidor WebSocket del middleware. Al establecerse la conexión, enviamos un mensaje desde el sistema CRM al middleware. Manejamos los mensajes entrantes, el cierre de conexión y los errores mediante event listeners.
+
+Creamos un cliente de socket TCP en la función connectToMiddlewareViaSocket y lo conectamos al servidor de sockets de bajo nivel del middleware. Al establecerse la conexión, enviamos un mensaje desde el sistema CRM al middleware. Manejamos los datos entrantes, el cierre de conexión y los errores mediante event listeners.
+
+Estos ejemplos demuestran cómo integrar un sistema CRM con el middleware proporcionado utilizando tanto comunicación WebSocket como sockets de bajo nivel en Node.js.

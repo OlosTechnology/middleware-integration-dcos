@@ -1,1 +1,31 @@
-# Welcome
+![Architecture](./defaultArchitecture.png)
+
+# Introduction
+
+The integration project between OlosChat and CRM systems, represented by the provided code, aims to facilitate communication and data exchange between the OlosChat chat platform and customer relationship management (CRM) systems. This project is developed using TypeScript and various real-time communication technologies, such as WebSockets and low-level sockets.
+
+The main class of the project is called `IntegrationSDK`, which functions as a software development kit for integration. It encapsulates the logic required to establish connections with OlosChat and CRM systems, as well as facilitating the sending of events and messages between these systems.
+
+Integration is achieved through two main methods: via WebSockets for real-time communication with OlosChat, and through low-level sockets for interaction with CRM systems. The `IntegrationSDK` class manages both connections efficiently, allowing for the sending and receiving of events and data between all involved parties.
+
+The project adopts a modular approach, with different entities and utilities responsible for specific tasks, such as reading configurations, handling WebSocket connections, and communicating with CRM clients. Additionally, mechanisms are implemented to handle client connection and disconnection, as well as to ensure proper assignment of agent identifiers.
+
+Through this project, it's possible to seamlessly integrate OlosChat with various CRM systems, enabling a better user experience and more efficient customer relationship management.
+
+## What is Integration SDK?
+
+This system is a comprehensive solution designed to seamlessly connect OlosChat, a versatile chat platform, with various Customer Relationship Management (CRM) systems. It comprises several key components:
+
+1. **WebSocketToCRM**: This class serves as the gateway for establishing a WebSocket connection to the CRM system. It manages the WebSocket server, handling events like connection establishment, closure, and errors. Additionally, it provides hooks for adding and removing WebSocket clients, enabling the system to react dynamically to client interactions.
+
+2. **SocketToCRM**: Similar to WebSocketToCRM, this class orchestrates the setup of a low-level socket connection to the CRM system. It oversees the creation of the socket server, manages events such as client connection and data reception, and offers hooks for adding and removing socket clients. This flexible design allows for alternative methods of communication with the CRM system, catering to diverse technological environments.
+
+3. **OlosTextWebSocket**: Here, we have a crucial component responsible for managing the WebSocket connection to the OlosChat platform. This class handles incoming messages from OlosChat clients, processes them, and forwards relevant data to the CRM system. It monitors the WebSocket server, reacting to events like connection closure and errors, ensuring uninterrupted communication between OlosChat and the CRM system.
+
+4. **CRMClient**: This class encapsulates the representation of a client connected to the CRM system, irrespective of whether the connection is through WebSocket or low-level socket. It maintains essential client information such as index, socket connection, and assigned agent ID. By providing methods to retrieve and set the agent ID, it facilitates seamless identification and management of clients within the integration system.
+
+Together, these components form a robust framework for integrating OlosChat with CRM systems, enabling efficient communication and data exchange between the two platforms. The system's modular design and event-driven architecture empower developers to extend its functionality and adapt it to diverse integration scenarios, ensuring scalability and flexibility in meeting business needs.
+
+## Repository
+
+[https://github.com/OlosCore/olos-chat-integration-sdk](https://github.com/OlosCore/olos-chat-integration-sdk).

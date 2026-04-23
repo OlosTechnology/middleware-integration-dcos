@@ -1,3 +1,7 @@
 {
-  "index": "Introduction"
+  "index": "Introduction",
+  "olostextintegration": "Olos Text Integration",
+  "howto": "How To",
+  "events": "Events",
+  "video-example": "Example"
 }
